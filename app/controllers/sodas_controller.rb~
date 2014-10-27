@@ -13,9 +13,9 @@ class SodasController < ApplicationController
     @soda = Soda.find(params[:id])
 
 	if !@soda.plato.first.nil?
-        render json: @soda.as_json(only:[:id, :nombre, :abre, :cierra, :iDesayuno, :fDesayuno, :iAlmuerzo, :fAlmuerzo, :iCena, :fCena, :long, :lat], include: [plato:{only: [:id]}])
+        render json: @soda.as_json(only:[:id, :nombre, :long, :lat, :descripcion], include: [plato:{only: [:id]}])
     else
-        render json: @soda.as_json(only:[:id, :nombre, :abre, :cierra, :iDesayuno, :fDesayuno, :iAlmuerzo, :fAlmuerzo, :iCena, :fCena, :long, :lat])
+        render json: @soda.as_json(only:[:id, :nombre, :long, :lat, :descripcion])
     end
 
   end
@@ -53,6 +53,6 @@ class SodasController < ApplicationController
   end
 
   def soda_params
-    params.permit(:nombre, :abre, :cierra, :iDesayuno, :fDesayuno, :iAlmuerzo, :fAlmuerzo, :iCena, :fCena)
+    params.permit(:nombre, :abre, :cierra, :iDesayuno, :fDesayuno, :iAlmuerzo, :fAlmuerzo, :iCena, :fCena, :long, :lat)
   end
 end

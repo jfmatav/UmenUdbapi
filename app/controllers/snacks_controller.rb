@@ -12,18 +12,25 @@ class SnacksController < ApplicationController
   def show
     @snack = Snack.find(params[:id])
 
-    render json: @snack.as_json(only: [:id, :nombre, :precio, :id_soda])
+    render json: @snack.as_json(only: [:id, :nombre, :precio, :soda_id])
   end
 
   # POST /snacks
   # POST /snacks.json
   def create
-    @snack = Snack.new(snack_params)
+    if params[:get]  
+      @snack = Snack.where("soda_id = ?", params[:soda_id])
 
-    if @snack.save
-      render json: @snack, status: :created, location: @snack
+      render json: @snack.as_json(only: [:id, :nombre, :precio, :soda_id])
+
     else
-      render json: @snack.errors, status: :unprocessable_entity
+      @snack = Snack.new(snack_params)
+
+      if @snack.save
+        render json: @snack, status: :created, location: @snack
+      else
+        render json: @snack.errors, status: :unprocessable_entity
+      end
     end
   end
 
@@ -49,6 +56,6 @@ class SnacksController < ApplicationController
   end
 
   def snack_params
-    params.permit(:nombre, :precio, :id_soda)
+    params.permit(:nombre, :precio, :soda_id)
   end
 end

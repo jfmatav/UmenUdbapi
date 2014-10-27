@@ -25,11 +25,8 @@ class PlatosController < ApplicationController
     if params[:get]
       @plato = Plato.where("soda_id = ? and dia = ? and semana = ?", params[:soda_id], params[:dia], params[:semana])
 
-      #if !@plato.comentario.first.nil?
-       # render json: @plato.as_json(only: [:id, :nombre, :precio, :categoria, :tipo, :calificaciones, :total, :soda_id], include: [comentario:{only: [:id]}])
-      #else
       render json: @plato.as_json(only: [:id, :nombre, :precio, :categoria, :tipo, :calificaciones, :total, :semana, :dia, :soda_id])
-      #end
+      
 
     else
       @plato = Plato.new(plato_params)

@@ -560,3 +560,100 @@ Migrating to AddDescripcionToSodas (20141024173948)
   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141024173948"]]
   [1m[35m (131.4ms)[0m  commit transaction
   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddAttributesToPlatos (20141027190720)
+  [1m[35m (11.5ms)[0m  begin transaction
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "platos" ADD "semana" integer[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "platos" ADD "dia" integer
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141027190720"]]
+  [1m[35m (123.7ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started POST "/platos?soda_id=11&get=1" for 127.0.0.1 at 2014-10-27 13:20:53 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PlatosController#create as HTML
+  Parameters: {"soda_id"=>"11", "get"=>"1", "plato"=>{}}
+  [1m[35mPlato Load (0.3ms)[0m  SELECT "platos".* FROM "platos"  WHERE (soda_id = '11' and dia = NULL and semana = NULL)
+Completed 200 OK in 25ms (Views: 0.3ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/platos" for 127.0.0.1 at 2014-10-27 13:21:04 -0600
+Processing by PlatosController#create as HTML
+  Parameters: {"plato"=>{}}
+Unpermitted parameters: plato
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "platos" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2014-10-27 19:21:04.657883"], ["updated_at", "2014-10-27 19:21:04.657883"]]
+  [1m[36m (163.9ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 191ms (Views: 2.6ms | ActiveRecord: 164.8ms)
+
+
+Started POST "/platos" for 127.0.0.1 at 2014-10-27 13:21:14 -0600
+Processing by PlatosController#create as HTML
+  Parameters: {"plato"=>{}}
+Unpermitted parameters: plato
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "platos" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2014-10-27 19:21:14.476134"], ["updated_at", "2014-10-27 19:21:14.476134"]]
+  [1m[35m (144.4ms)[0m  commit transaction
+Completed 201 Created in 153ms (Views: 2.7ms | ActiveRecord: 145.3ms)
+
+
+Started POST "/platos?soda_id=11&semana=1&dia=1" for 127.0.0.1 at 2014-10-27 13:23:02 -0600
+Processing by PlatosController#create as HTML
+  Parameters: {"soda_id"=>"11", "semana"=>"1", "dia"=>"1", "plato"=>{}}
+Unpermitted parameters: plato
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "platos" ("created_at", "dia", "semana", "soda_id", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-10-27 19:23:02.780883"], ["dia", 1], ["semana", 1], ["soda_id", 11], ["updated_at", "2014-10-27 19:23:02.780883"]]
+  [1m[36m (148.7ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 154ms (Views: 1.0ms | ActiveRecord: 149.4ms)
+
+
+Started POST "/platos?soda_id=11&semana=1&dia=2" for 127.0.0.1 at 2014-10-27 13:23:12 -0600
+Processing by PlatosController#create as HTML
+  Parameters: {"soda_id"=>"11", "semana"=>"1", "dia"=>"2", "plato"=>{}}
+Unpermitted parameters: plato
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "platos" ("created_at", "dia", "semana", "soda_id", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-10-27 19:23:12.997303"], ["dia", 2], ["semana", 1], ["soda_id", 11], ["updated_at", "2014-10-27 19:23:12.997303"]]
+  [1m[35m (125.9ms)[0m  commit transaction
+Completed 201 Created in 131ms (Views: 1.1ms | ActiveRecord: 126.5ms)
+
+
+Started POST "/platos?soda_id=11&semana=1&dia=2&get=1" for 127.0.0.1 at 2014-10-27 13:23:23 -0600
+Processing by PlatosController#create as HTML
+  Parameters: {"soda_id"=>"11", "semana"=>"1", "dia"=>"2", "get"=>"1", "plato"=>{}}
+  [1m[36mPlato Load (0.3ms)[0m  [1mSELECT "platos".* FROM "platos"  WHERE (soda_id = '11' and dia = '2' and semana = '1')[0m
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/platos?soda_id=11&semana=1&dia=2" for 127.0.0.1 at 2014-10-27 15:14:57 -0600
+Processing by PlatosController#create as HTML
+  Parameters: {"soda_id"=>"11", "semana"=>"1", "dia"=>"2", "plato"=>{}}
+Unpermitted parameters: plato
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "platos" ("created_at", "dia", "semana", "soda_id", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-10-27 21:14:57.973964"], ["dia", 2], ["semana", 1], ["soda_id", 11], ["updated_at", "2014-10-27 21:14:57.973964"]]
+  [1m[35m (159.0ms)[0m  commit transaction
+Completed 201 Created in 165ms (Views: 1.1ms | ActiveRecord: 159.8ms)
+
+
+Started POST "/platos?soda_id=11&semana=1&dia=2" for 127.0.0.1 at 2014-10-27 15:14:58 -0600
+Processing by PlatosController#create as HTML
+  Parameters: {"soda_id"=>"11", "semana"=>"1", "dia"=>"2", "plato"=>{}}
+Unpermitted parameters: plato
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "platos" ("created_at", "dia", "semana", "soda_id", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-10-27 21:14:58.146561"], ["dia", 2], ["semana", 1], ["soda_id", 11], ["updated_at", "2014-10-27 21:14:58.146561"]]
+  [1m[36m (131.3ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 138ms (Views: 1.6ms | ActiveRecord: 132.0ms)
+
+
+Started POST "/platos?soda_id=11&semana=1&dia=2&get=1" for 127.0.0.1 at 2014-10-27 15:15:04 -0600
+Processing by PlatosController#create as HTML
+  Parameters: {"soda_id"=>"11", "semana"=>"1", "dia"=>"2", "get"=>"1", "plato"=>{}}
+  [1m[35mPlato Load (0.4ms)[0m  SELECT "platos".* FROM "platos"  WHERE (soda_id = '11' and dia = '2' and semana = '1')
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/platos?soda_id=11&semana=1&dia=2&get=1" for 127.0.0.1 at 2014-10-27 15:15:04 -0600
+Processing by PlatosController#create as HTML
+  Parameters: {"soda_id"=>"11", "semana"=>"1", "dia"=>"2", "get"=>"1", "plato"=>{}}
+  [1m[36mPlato Load (0.3ms)[0m  [1mSELECT "platos".* FROM "platos"  WHERE (soda_id = '11' and dia = '2' and semana = '1')[0m
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.3ms)

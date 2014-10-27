@@ -13,9 +13,9 @@ class PlatosController < ApplicationController
     @plato = Plato.find(params[:id])
 
     if !@plato.comentario.first.nil?
-      render json: @plato.as_json(only: [:id, :nombre, :precio, :categoria, :tipo, :calificaciones, :total, :soda_id], include: [comentario:{only: [:id]}])
+      render json: @plato.as_json(only: [:id, :nombre, :precio, :categoria, :tipo, :calificaciones, :total, :semana, :dia, :soda_id], include: [comentario:{only: [:id]}])
     else
-      render json: @plato.as_json(only: [:id, :nombre, :precio, :categoria, :tipo, :calificaciones, :total, :soda_id])
+      render json: @plato.as_json(only: [:id, :nombre, :precio, :categoria, :tipo, :calificaciones, :total, :semana, :dia, :soda_id])
     end
   end
 
@@ -23,12 +23,12 @@ class PlatosController < ApplicationController
   # POST /platos.json
   def create
     if params[:get]
-      @plato = Plato.where("soda_id = ?", params[:soda_id])
+      @plato = Plato.where("soda_id = ? and dia = ? and semana = ?", params[:soda_id], params[:dia], params[:semana])
 
       #if !@plato.comentario.first.nil?
        # render json: @plato.as_json(only: [:id, :nombre, :precio, :categoria, :tipo, :calificaciones, :total, :soda_id], include: [comentario:{only: [:id]}])
       #else
-        render json: @plato.as_json(only: [:id, :nombre, :precio, :categoria, :tipo, :calificaciones, :total, :soda_id])
+      render json: @plato.as_json(only: [:id, :nombre, :precio, :categoria, :tipo, :calificaciones, :total, :semana, :dia, :soda_id])
       #end
 
     else
@@ -65,6 +65,6 @@ class PlatosController < ApplicationController
   end
 
   def plato_params 
-    params.permit(:nombre, :precio, :categoria, :tipo, :calificaciones, :total, :soda_id, :get)
+    params.permit(:nombre, :precio, :categoria, :tipo, :calificaciones, :total, :soda_id, :get, :semana, :dia)
   end
 end

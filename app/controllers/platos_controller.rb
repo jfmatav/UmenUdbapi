@@ -24,9 +24,9 @@ class PlatosController < ApplicationController
   def create
     if params[:best]
       @plato = Plato.where("dia = ? and semana = ?", params[:dia], params[:semana])
-      @plato.order(:promedio)
+      #@plato.order(:promedio)
       
-      @recomendacion = @plato
+      @recomendacion = @plato.order(promedio: :desc).first
 
       render json: @recomendacion.as_json(only: [:id, :nombre, :precio, :categoria, :calificaciones, :total, :soda_id, :promedio])
 

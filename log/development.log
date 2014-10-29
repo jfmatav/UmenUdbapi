@@ -657,3 +657,92 @@ Processing by PlatosController#create as HTML
   Parameters: {"soda_id"=>"11", "semana"=>"1", "dia"=>"2", "get"=>"1", "plato"=>{}}
   [1m[36mPlato Load (0.3ms)[0m  [1mSELECT "platos".* FROM "platos"  WHERE (soda_id = '11' and dia = '2' and semana = '1')[0m
 Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/snakcs?soda_id=11" for 127.0.0.1 at 2014-10-27 17:04:30 -0600
+
+ActionController::RoutingError (No route matches [POST] "/snakcs"):
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (29.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (77.0ms)
+
+
+Started POST "/snacks?soda_id=11" for 127.0.0.1 at 2014-10-27 17:04:40 -0600
+Processing by SnacksController#create as HTML
+  Parameters: {"soda_id"=>"11", "snack"=>{}}
+Unpermitted parameters: snack
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "snacks" ("created_at", "soda_id", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-10-27 23:04:40.083981"], ["soda_id", 11], ["updated_at", "2014-10-27 23:04:40.083981"]]
+  [1m[35m (106.0ms)[0m  commit transaction
+Completed 201 Created in 118ms (Views: 1.9ms | ActiveRecord: 107.5ms)
+
+
+Started POST "/snacks?soda_id=11" for 127.0.0.1 at 2014-10-27 17:04:48 -0600
+Processing by SnacksController#create as HTML
+  Parameters: {"soda_id"=>"11", "snack"=>{}}
+Unpermitted parameters: snack
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "snacks" ("created_at", "soda_id", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-10-27 23:04:48.481920"], ["soda_id", 11], ["updated_at", "2014-10-27 23:04:48.481920"]]
+  [1m[36m (146.2ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 154ms (Views: 1.0ms | ActiveRecord: 146.9ms)
+
+
+Started POST "/snacks?soda_id=11" for 127.0.0.1 at 2014-10-27 17:04:51 -0600
+Processing by SnacksController#create as HTML
+  Parameters: {"soda_id"=>"11", "snack"=>{}}
+Unpermitted parameters: snack
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "snacks" ("created_at", "soda_id", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-10-27 23:04:51.330596"], ["soda_id", 11], ["updated_at", "2014-10-27 23:04:51.330596"]]
+  [1m[35m (124.5ms)[0m  commit transaction
+Completed 201 Created in 129ms (Views: 1.0ms | ActiveRecord: 125.1ms)
+
+
+Started POST "/snacks?soda_id=13" for 127.0.0.1 at 2014-10-27 17:04:57 -0600
+Processing by SnacksController#create as HTML
+  Parameters: {"soda_id"=>"13", "snack"=>{}}
+Unpermitted parameters: snack
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "snacks" ("created_at", "soda_id", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-10-27 23:04:57.325051"], ["soda_id", 13], ["updated_at", "2014-10-27 23:04:57.325051"]]
+  [1m[36m (157.4ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 163ms (Views: 1.4ms | ActiveRecord: 158.1ms)
+
+
+Started POST "/snacks?soda_id=11" for 127.0.0.1 at 2014-10-27 17:05:02 -0600
+Processing by SnacksController#create as HTML
+  Parameters: {"soda_id"=>"11", "snack"=>{}}
+Unpermitted parameters: snack
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "snacks" ("created_at", "soda_id", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-10-27 23:05:02.605478"], ["soda_id", 11], ["updated_at", "2014-10-27 23:05:02.605478"]]
+  [1m[35m (160.6ms)[0m  commit transaction
+Completed 201 Created in 166ms (Views: 1.3ms | ActiveRecord: 161.3ms)
+
+
+Started POST "/snacks?soda_id=11&get=1" for 127.0.0.1 at 2014-10-27 17:05:10 -0600
+Processing by SnacksController#create as HTML
+  Parameters: {"soda_id"=>"11", "get"=>"1", "snack"=>{}}
+  [1m[36mSnack Load (1.0ms)[0m  [1mSELECT "snacks".* FROM "snacks"  WHERE (soda_id = '11')[0m
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 1.0ms)

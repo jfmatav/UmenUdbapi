@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141027190720) do
+ActiveRecord::Schema.define(version: 20141029011851) do
 
   create_table "comentarios", force: true do |t|
     t.integer  "usuario_id"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20141027190720) do
     t.datetime "updated_at"
     t.integer  "semana"
     t.integer  "dia"
+    t.float    "promedio"
   end
 
   create_table "snacks", force: true do |t|

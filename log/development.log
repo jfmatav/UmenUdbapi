@@ -746,3 +746,10 @@ Processing by SnacksController#create as HTML
   Parameters: {"soda_id"=>"11", "get"=>"1", "snack"=>{}}
   [1m[36mSnack Load (1.0ms)[0m  [1mSELECT "snacks".* FROM "snacks"  WHERE (soda_id = '11')[0m
 Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 1.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddPromedioToPlato (20141029011851)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (21.3ms)[0m  [1mALTER TABLE "platos" ADD "promedio" float[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141029011851"]]
+  [1m[36m (125.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"

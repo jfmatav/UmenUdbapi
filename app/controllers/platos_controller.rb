@@ -45,7 +45,7 @@ class PlatosController < ApplicationController
 
       else
         if params[:get]
-          @plato = Plato.where("soda_id = ? and dia = ? and semana = ?", params[:soda_id], params[:dia], params[:semana])
+          @plato = Plato.where("soda_id = ? and dia = ? and semana = ? and categoria = ?", params[:soda_id], params[:dia], params[:semana], params[:categoria])
 
           render json: @plato.as_json(only: [:id, :nombre, :precio, :categoria, :tipo, :calificaciones, :total, :semana, :dia, :soda_id, :promedio])
       

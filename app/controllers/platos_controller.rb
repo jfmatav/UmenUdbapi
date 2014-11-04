@@ -52,6 +52,9 @@ class PlatosController < ApplicationController
 
         else
           @plato = Plato.new(plato_params)
+          @plato.total = 0
+          @plato.calificaciones = 0
+          @plato.promedio = 0
 
           if @plato.save
             render json: @plato, status: :created, location: @plato

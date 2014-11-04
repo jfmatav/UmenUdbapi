@@ -71,6 +71,24 @@ class PlatosController < ApplicationController
   def update
     @plato = Plato.find(params[:id])
 
+    if @plato.total
+
+    else
+      @plato.total = 0
+    end
+
+    if @plato.calificaciones
+
+    else
+      @plato.calificaciones = 0
+    end
+
+    if @plato.promedio
+
+    else
+      @plato.promedio = 0
+    end
+
     if @plato.update(plato_params)
       head :no_content
     else

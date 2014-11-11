@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  acompanamientos: MyText
+  dia: 1
+  semana: 1
+  soda_id: 1
+
+two:
+  acompanamientos: MyText
+  dia: 1
+  semana: 1
+  soda_id: 1

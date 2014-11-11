@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :acompanamientos, except: [:new, :edit]
   resources :sodas, except: [:new, :edit]
   resources :snacks, except: [:new, :edit]
   resources :usuarios, except: [:new, :edit]

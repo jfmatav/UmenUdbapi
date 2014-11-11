@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141029011851) do
+ActiveRecord::Schema.define(version: 20141111181255) do
+
+  create_table "acompanamientos", force: true do |t|
+    t.text    "acompanamientos"
+    t.integer "dia"
+    t.integer "semana"
+    t.integer "soda_id"
+  end
 
   create_table "comentarios", force: true do |t|
     t.integer  "usuario_id"

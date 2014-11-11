@@ -1002,3 +1002,358 @@ Processing by AcompanamientosController#create as HTML
   [1m[35mSQL (0.6ms)[0m  INSERT INTO "acompanamientos" DEFAULT VALUES
   [1m[36m (160.4ms)[0m  [1mcommit transaction[0m
 Completed 201 Created in 165ms (Views: 1.0ms | ActiveRecord: 161.4ms)
+
+
+Started GET "/platos" for 127.0.0.1 at 2014-11-11 14:15:31 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PlatosController#index as HTML
+  [1m[35mPlato Load (0.5ms)[0m  SELECT "platos".* FROM "platos"
+Completed 200 OK in 83ms (Views: 24.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/platos?id=13&nota=5" for 127.0.0.1 at 2014-11-11 14:23:55 -0600
+Processing by PlatosController#index as HTML
+  Parameters: {"id"=>"13", "nota"=>"5"}
+  [1m[36mPlato Load (0.4ms)[0m  [1mSELECT "platos".* FROM "platos"[0m
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/platos?id=13&nota=5" for 127.0.0.1 at 2014-11-11 14:24:08 -0600
+Processing by PlatosController#create as HTML
+  Parameters: {"id"=>"13", "nota"=>"5"}
+  [1m[35mPlato Load (0.4ms)[0m  SELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1  [["id", 13]]
+Completed 500 Internal Server Error in 4ms
+
+NoMethodError (undefined method `+' for nil:NilClass):
+  app/controllers/platos_controller.rb:37:in `create'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (26.3ms)
+
+
+Started GET "/platos/13" for 127.0.0.1 at 2014-11-11 14:26:34 -0600
+Processing by PlatosController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mPlato Load (0.2ms)[0m  [1mSELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1[0m  [["id", 13]]
+  [1m[35mComentario Load (0.4ms)[0m  SELECT  "comentarios".* FROM "comentarios"  WHERE "comentarios"."plato_id" = ?  ORDER BY "comentarios"."id" ASC LIMIT 1  [["plato_id", 13]]
+Completed 200 OK in 146ms (Views: 0.6ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/platos/" for 127.0.0.1 at 2014-11-11 14:27:23 -0600
+Processing by PlatosController#index as HTML
+  [1m[36mPlato Load (0.4ms)[0m  [1mSELECT "platos".* FROM "platos"[0m
+Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/platos/" for 127.0.0.1 at 2014-11-11 14:27:41 -0600
+Processing by PlatosController#create as HTML
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "platos" ("calificaciones", "created_at", "promedio", "total", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["calificaciones", 0], ["created_at", "2014-11-11 20:27:41.644324"], ["promedio", 0.0], ["total", 0], ["updated_at", "2014-11-11 20:27:41.644324"]]
+  [1m[35m (176.3ms)[0m  commit transaction
+Completed 201 Created in 187ms (Views: 2.3ms | ActiveRecord: 177.3ms)
+
+
+Started POST "/platos?id=14&nota=5" for 127.0.0.1 at 2014-11-11 14:28:03 -0600
+Processing by PlatosController#create as HTML
+  Parameters: {"id"=>"14", "nota"=>"5"}
+  [1m[36mPlato Load (0.2ms)[0m  [1mSELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1[0m  [["id", 14]]
+Completed 500 Internal Server Error in 2ms
+
+TypeError (String can't be coerced into Fixnum):
+  app/controllers/platos_controller.rb:43:in `+'
+  app/controllers/platos_controller.rb:43:in `create'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.9ms)
+
+
+Started POST "/platos?id=14&nota=5" for 127.0.0.1 at 2014-11-11 14:29:15 -0600
+Processing by PlatosController#create as HTML
+  Parameters: {"id"=>"14", "nota"=>"5"}
+  [1m[35mPlato Load (0.3ms)[0m  SELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1  [["id", 14]]
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  UPDATE "platos" SET "calificaciones" = ?, "total" = ?, "updated_at" = ? WHERE "platos"."id" = 14  [["calificaciones", 1], ["total", 5], ["updated_at", "2014-11-11 20:29:15.906105"]]
+  [1m[36m (127.9ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 151ms (Views: 0.4ms | ActiveRecord: 130.0ms)
+
+
+Started POST "/platos/14" for 127.0.0.1 at 2014-11-11 14:29:32 -0600
+
+ActionController::RoutingError (No route matches [POST] "/platos/14"):
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (7.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (9.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (84.3ms)
+
+
+Started GET "/platos/14" for 127.0.0.1 at 2014-11-11 14:29:38 -0600
+Processing by PlatosController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[35mPlato Load (0.2ms)[0m  SELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1  [["id", 14]]
+  [1m[36mComentario Load (0.2ms)[0m  [1mSELECT  "comentarios".* FROM "comentarios"  WHERE "comentarios"."plato_id" = ?  ORDER BY "comentarios"."id" ASC LIMIT 1[0m  [["plato_id", 14]]
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/platos?id=14&nota=4" for 127.0.0.1 at 2014-11-11 14:30:06 -0600
+Processing by PlatosController#create as HTML
+  Parameters: {"id"=>"14", "nota"=>"4"}
+  [1m[35mPlato Load (0.2ms)[0m  SELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1  [["id", 14]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "platos" SET "calificaciones" = ?, "total" = ?, "updated_at" = ? WHERE "platos"."id" = 14  [["calificaciones", 2], ["total", 9], ["updated_at", "2014-11-11 20:30:06.845249"]]
+  [1m[36m (204.0ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 209ms (Views: 0.2ms | ActiveRecord: 204.8ms)
+
+
+Started GET "/platos/14" for 127.0.0.1 at 2014-11-11 14:30:20 -0600
+Processing by PlatosController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[35mPlato Load (0.2ms)[0m  SELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1  [["id", 14]]
+  [1m[36mComentario Load (0.1ms)[0m  [1mSELECT  "comentarios".* FROM "comentarios"  WHERE "comentarios"."plato_id" = ?  ORDER BY "comentarios"."id" ASC LIMIT 1[0m  [["plato_id", 14]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/platos?id=14&nota=3" for 127.0.0.1 at 2014-11-11 14:31:18 -0600
+Processing by PlatosController#index as HTML
+  Parameters: {"id"=>"14", "nota"=>"3"}
+  [1m[35mPlato Load (0.7ms)[0m  SELECT "platos".* FROM "platos"
+Completed 200 OK in 23ms (Views: 17.4ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/platos?id=14&nota=3" for 127.0.0.1 at 2014-11-11 14:31:23 -0600
+Processing by PlatosController#create as HTML
+  Parameters: {"id"=>"14", "nota"=>"3"}
+  [1m[36mPlato Load (0.3ms)[0m  [1mSELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mUPDATE "platos" SET "calificaciones" = ?, "promedio" = ?, "total" = ?, "updated_at" = ? WHERE "platos"."id" = 14[0m  [["calificaciones", 3], ["promedio", 4.0], ["total", 12], ["updated_at", "2014-11-11 20:31:23.822213"]]
+  [1m[35m (286.6ms)[0m  commit transaction
+Completed 201 Created in 292ms (Views: 0.2ms | ActiveRecord: 287.9ms)
+
+
+Started POST "/platos/14" for 127.0.0.1 at 2014-11-11 14:31:32 -0600
+
+ActionController::RoutingError (No route matches [POST] "/platos/14"):
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (5.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (43.6ms)
+
+
+Started GET "/platos/14" for 127.0.0.1 at 2014-11-11 14:31:38 -0600
+Processing by PlatosController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mPlato Load (0.2ms)[0m  [1mSELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35mComentario Load (0.2ms)[0m  SELECT  "comentarios".* FROM "comentarios"  WHERE "comentarios"."plato_id" = ?  ORDER BY "comentarios"."id" ASC LIMIT 1  [["plato_id", 14]]
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/platos?id=14&nota=2" for 127.0.0.1 at 2014-11-11 14:34:18 -0600
+Processing by PlatosController#index as HTML
+  Parameters: {"id"=>"14", "nota"=>"2"}
+  [1m[36mPlato Load (0.8ms)[0m  [1mSELECT "platos".* FROM "platos"[0m
+Completed 200 OK in 23ms (Views: 17.6ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/platos?id=14&nota=2" for 127.0.0.1 at 2014-11-11 14:34:22 -0600
+Processing by PlatosController#create as HTML
+  Parameters: {"id"=>"14", "nota"=>"2"}
+  [1m[35mPlato Load (0.3ms)[0m  SELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1  [["id", 14]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "platos" SET "calificaciones" = ?, "promedio" = ?, "total" = ?, "updated_at" = ? WHERE "platos"."id" = 14  [["calificaciones", 4], ["promedio", 3.0], ["total", 14], ["updated_at", "2014-11-11 20:34:22.730208"]]
+  [1m[36m (159.0ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 164ms (Views: 0.3ms | ActiveRecord: 159.9ms)
+
+
+Started GET "/platos/13" for 127.0.0.1 at 2014-11-11 14:35:17 -0600
+Processing by PlatosController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[35mPlato Load (0.2ms)[0m  SELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1  [["id", 13]]
+  [1m[36mComentario Load (0.2ms)[0m  [1mSELECT  "comentarios".* FROM "comentarios"  WHERE "comentarios"."plato_id" = ?  ORDER BY "comentarios"."id" ASC LIMIT 1[0m  [["plato_id", 13]]
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/platos?id=13&nota=5" for 127.0.0.1 at 2014-11-11 14:35:30 -0600
+Processing by PlatosController#create as HTML
+  Parameters: {"id"=>"13", "nota"=>"5"}
+  [1m[35mPlato Load (0.3ms)[0m  SELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1  [["id", 13]]
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  UPDATE "platos" SET "calificaciones" = ?, "total" = ?, "updated_at" = ? WHERE "platos"."id" = 13  [["calificaciones", 1], ["total", 5], ["updated_at", "2014-11-11 20:35:30.781394"]]
+  [1m[36m (156.4ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 163ms (Views: 0.2ms | ActiveRecord: 157.5ms)
+
+
+Started GET "/platos/13" for 127.0.0.1 at 2014-11-11 14:36:35 -0600
+Processing by PlatosController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[35mPlato Load (0.3ms)[0m  SELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1  [["id", 13]]
+  [1m[36mComentario Load (0.2ms)[0m  [1mSELECT  "comentarios".* FROM "comentarios"  WHERE "comentarios"."plato_id" = ?  ORDER BY "comentarios"."id" ASC LIMIT 1[0m  [["plato_id", 13]]
+Completed 200 OK in 26ms (Views: 0.4ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/platos" for 127.0.0.1 at 2014-11-11 14:36:56 -0600
+Processing by PlatosController#index as HTML
+  [1m[35mPlato Load (0.4ms)[0m  SELECT "platos".* FROM "platos"
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/platos?id=2&nota=4" for 127.0.0.1 at 2014-11-11 14:37:12 -0600
+Processing by PlatosController#index as HTML
+  Parameters: {"id"=>"2", "nota"=>"4"}
+  [1m[36mPlato Load (0.4ms)[0m  [1mSELECT "platos".* FROM "platos"[0m
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/platos?id=2&nota=4" for 127.0.0.1 at 2014-11-11 14:37:17 -0600
+Processing by PlatosController#create as HTML
+  Parameters: {"id"=>"2", "nota"=>"4"}
+  [1m[35mPlato Load (0.2ms)[0m  SELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "platos" SET "calificaciones" = ?, "promedio" = ?, "total" = ?, "updated_at" = ? WHERE "platos"."id" = 2  [["calificaciones", 1], ["promedio", 4.0], ["total", 4], ["updated_at", "2014-11-11 20:37:17.606610"]]
+  [1m[36m (169.1ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 174ms (Views: 0.2ms | ActiveRecord: 169.9ms)
+
+
+Started GET "/platos/2" for 127.0.0.1 at 2014-11-11 14:37:28 -0600
+Processing by PlatosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mPlato Load (2.3ms)[0m  SELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mComentario Load (0.1ms)[0m  [1mSELECT  "comentarios".* FROM "comentarios"  WHERE "comentarios"."plato_id" = ?  ORDER BY "comentarios"."id" ASC LIMIT 1[0m  [["plato_id", 2]]
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/platos?id=2&nota=5" for 127.0.0.1 at 2014-11-11 14:37:47 -0600
+Processing by PlatosController#create as HTML
+  Parameters: {"id"=>"2", "nota"=>"5"}
+  [1m[35mPlato Load (0.2ms)[0m  SELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "platos" SET "calificaciones" = ?, "total" = ?, "updated_at" = ? WHERE "platos"."id" = 2  [["calificaciones", 2], ["total", 9], ["updated_at", "2014-11-11 20:37:47.260211"]]
+  [1m[36m (144.6ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 150ms (Views: 0.3ms | ActiveRecord: 145.4ms)
+
+
+Started GET "/platos/2" for 127.0.0.1 at 2014-11-11 14:37:55 -0600
+Processing by PlatosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mPlato Load (0.2ms)[0m  SELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mComentario Load (0.2ms)[0m  [1mSELECT  "comentarios".* FROM "comentarios"  WHERE "comentarios"."plato_id" = ?  ORDER BY "comentarios"."id" ASC LIMIT 1[0m  [["plato_id", 2]]
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/platos/3" for 127.0.0.1 at 2014-11-11 14:38:31 -0600
+Processing by PlatosController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPlato Load (0.2ms)[0m  SELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mComentario Load (0.1ms)[0m  [1mSELECT  "comentarios".* FROM "comentarios"  WHERE "comentarios"."plato_id" = ?  ORDER BY "comentarios"."id" ASC LIMIT 1[0m  [["plato_id", 3]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/platos?id=3&nota=2" for 127.0.0.1 at 2014-11-11 14:38:48 -0600
+Processing by PlatosController#create as HTML
+  Parameters: {"id"=>"3", "nota"=>"2"}
+  [1m[35mPlato Load (0.2ms)[0m  SELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "platos" SET "calificaciones" = ?, "promedio" = ?, "total" = ?, "updated_at" = ? WHERE "platos"."id" = 3  [["calificaciones", 1], ["promedio", 2.0], ["total", 2], ["updated_at", "2014-11-11 20:38:48.723112"]]
+  [1m[36m (141.6ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 146ms (Views: 0.3ms | ActiveRecord: 142.4ms)
+
+
+Started GET "/platos/3" for 127.0.0.1 at 2014-11-11 14:38:57 -0600
+Processing by PlatosController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPlato Load (0.2ms)[0m  SELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mComentario Load (0.1ms)[0m  [1mSELECT  "comentarios".* FROM "comentarios"  WHERE "comentarios"."plato_id" = ?  ORDER BY "comentarios"."id" ASC LIMIT 1[0m  [["plato_id", 3]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/platos?id=3&nota=5" for 127.0.0.1 at 2014-11-11 14:39:11 -0600
+Processing by PlatosController#index as HTML
+  Parameters: {"id"=>"3", "nota"=>"5"}
+  [1m[35mPlato Load (0.4ms)[0m  SELECT "platos".* FROM "platos"
+Completed 200 OK in 10ms (Views: 9.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/platos?id=3&nota=5" for 127.0.0.1 at 2014-11-11 14:39:15 -0600
+Processing by PlatosController#create as HTML
+  Parameters: {"id"=>"3", "nota"=>"5"}
+  [1m[36mPlato Load (0.2ms)[0m  [1mSELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "platos" SET "calificaciones" = ?, "promedio" = ?, "total" = ?, "updated_at" = ? WHERE "platos"."id" = 3[0m  [["calificaciones", 2], ["promedio", 3.0], ["total", 7], ["updated_at", "2014-11-11 20:39:15.616470"]]
+  [1m[35m (125.5ms)[0m  commit transaction
+Completed 200 OK in 131ms (Views: 0.3ms | ActiveRecord: 126.3ms)
+
+
+Started GET "/platos/3" for 127.0.0.1 at 2014-11-11 14:39:26 -0600
+Processing by PlatosController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPlato Load (0.2ms)[0m  [1mSELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mComentario Load (0.1ms)[0m  SELECT  "comentarios".* FROM "comentarios"  WHERE "comentarios"."plato_id" = ?  ORDER BY "comentarios"."id" ASC LIMIT 1  [["plato_id", 3]]
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/platos?id=3&nota=1" for 127.0.0.1 at 2014-11-11 14:41:13 -0600
+Processing by PlatosController#create as HTML
+  Parameters: {"id"=>"3", "nota"=>"1"}
+  [1m[36mPlato Load (0.2ms)[0m  [1mSELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "platos" SET "calificaciones" = ?, "promedio" = ?, "total" = ?, "updated_at" = ? WHERE "platos"."id" = 3[0m  [["calificaciones", 3], ["promedio", 2.6666666666666665], ["total", 8], ["updated_at", "2014-11-11 20:41:13.375041"]]
+  [1m[35m (137.0ms)[0m  commit transaction
+Completed 200 OK in 159ms (Views: 0.4ms | ActiveRecord: 139.0ms)
+
+
+Started GET "/platos/3" for 127.0.0.1 at 2014-11-11 14:41:23 -0600
+Processing by PlatosController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPlato Load (0.2ms)[0m  [1mSELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mComentario Load (0.2ms)[0m  SELECT  "comentarios".* FROM "comentarios"  WHERE "comentarios"."plato_id" = ?  ORDER BY "comentarios"."id" ASC LIMIT 1  [["plato_id", 3]]
+Completed 200 OK in 29ms (Views: 0.4ms | ActiveRecord: 1.4ms)

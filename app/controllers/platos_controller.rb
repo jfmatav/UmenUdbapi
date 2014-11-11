@@ -23,7 +23,7 @@ class PlatosController < ApplicationController
   # POST /platos.json
   def create
 
-    if params[:menu]
+    if params[:menu] #CONSULTA QUE PIDIÓ HECTOR PARA DESPLEGAR TODOS LOS PLATOS DE UNA SODA EN UN DÏA ESPECÍFICO
 
       @plato = Plato.where("dia = ? and semana = ? and soda_id = ?", params[:dia], params[:semana], params[:soda_id])
       
@@ -31,19 +31,27 @@ class PlatosController < ApplicationController
       
 
     else
-      if params[:c]
+      if params[:nota]
 
         @p = Plato.find(params[:id])
-        @p.calificaciones = params[:calificaciones]
-        @p.total = params[:total]
-        @p.promedio = params[:promedio]
-  
+        if @p.calificaciones
+          @p.calificaciones = @p.calificaciones + 1
+        else
+          @p.calificaciones = 1
+        end
+        if @p.total
+          @p.total = @p.total + params[:nota].to_i
+        else
+          @p.total = params[:nota].to_i
+        end
+        @p.promedio = @p.total.to_f/@p.calificaciones.to_f
+    
         @p.save
 
-        render json: @plato, status: :created, location: @plato
+        render json: @plato.as_json#, status: :created, location: @plato
 
       else
-        if params[:best]
+        if params[:best] # CONSULTA QUE DEVUELVE EL MEJOR PLARO DE UN DïA ESPECIFICO
           @plato = Plato.where("dia = ? and semana = ?", params[:dia], params[:semana])
           #@plato.order(:promedio)
       
@@ -51,19 +59,19 @@ class PlatosController < ApplicationController
 
           render json: @recomendacion.as_json(only: [:id, :nombre, :precio, :categoria, :calificaciones, :total, :soda_id, :promedio])
 
-        else
-          if params[:get]
+        else 
+          if params[:get] # CONSULTA QUE DA UN PLATO DE UN TIPO, DIA, SEMANA y SODA ESPECIFICOS
             @plato = Plato.where("soda_id = ? and dia = ? and semana = ? and categoria = ?", params[:soda_id], params[:dia], params[:semana], params[:categoria])
 
             render json: @plato.as_json(only: [:id, :nombre, :precio, :categoria, :tipo, :calificaciones, :total, :semana, :dia, :soda_id, :promedio])
       
 
-          else
+          else # CREA UN NUEVO PLATO CON EL JSON
             @plato = Plato.new(plato_params)
             @plato.total = 0
             @plato.calificaciones = 0
             @plato.promedio = 0
-
+  
             if @plato.save
               render json: @plato, status: :created, location: @plato
             else
@@ -97,6 +105,6 @@ class PlatosController < ApplicationController
   end
 
   def plato_params 
-    params.permit(:nombre, :precio, :categoria, :tipo, :calificaciones, :total, :soda_id, :get, :semana, :dia, :promedio, :best, :c, :menu)
+    params.permit(:nombre, :precio, :categoria, :tipo, :calificaciones, :total, :soda_id, :get, :semana, :dia, :promedio, :best, :menu, :nota)
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141111181255) do
+ActiveRecord::Schema.define(version: 20141114041156) do
 
   create_table "acompanamientos", force: true do |t|
     t.text    "acompanamientos"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20141111181255) do
     t.string   "direccion"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "password"
   end
 
 end

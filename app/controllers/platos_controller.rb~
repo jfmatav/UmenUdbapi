@@ -44,7 +44,7 @@ class PlatosController < ApplicationController
         else
           @p.total = params[:nota].to_i
         end
-        @p.promedio = @p.total/@p.calificaciones
+        @p.promedio = @p.total.to_f/@p.calificaciones.to_f
     
         @p.save
 

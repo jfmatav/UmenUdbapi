@@ -13,9 +13,10 @@ class UsuariosController < ApplicationController
     @usuario = Usuario.find(params[:id])
 
     if !@usuario.comentario.first.nil?
-        render json: @usuario.as_json(only: [:id, :nombre, :direccion], include: [comentario:{only: [:id]}])
+        render json: @usuario.as_json(only: [:id, :nombre, :direccion, :password], include: [comentario:{only: [:id]}])
     else
-        render json: @usuario.as_json(only: [:id, :nombre, :direccion])
+        render json: @usuario.as_json(only: [:id, :nombre, :direccion, :password])
+    end
   end
 
   # POST /usuarios
@@ -52,6 +53,6 @@ class UsuariosController < ApplicationController
   end
 
   def usuario_params
-    params.permit(:nombre, :direccion)
+    params.permit(:nombre, :direccion, :password)
   end
 end

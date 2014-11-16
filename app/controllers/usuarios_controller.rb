@@ -23,19 +23,29 @@ class UsuariosController < ApplicationController
   # POST /usuarios.json
   def create
       
-    if params[:opt]
+    if params[:dest]
 
-      @usuario = Usuario.where("direccion = ?", params[:direccion])
+      Usuario.delete_all(:direccion => params[:direccion])
 
-      render json: @usuario.as_json(only: [:id, :direccion, :password])
+      head :no_content
 
-    else      
-      @usuario = Usuario.new(usuario_params)
+    
+    else
 
-      if @usuario.save
-        render json: @usuario, status: :created, location: @usuario
-      else
-        render json: @usuario.errors, status: :unprocessable_entity
+      if params[:opt]
+
+        @usuario = Usuario.where("direccion = ?", params[:direccion])
+
+        render json: @usuario.as_json(only: [:id, :direccion, :password])
+
+      else      
+        @usuario = Usuario.new(usuario_params)
+
+        if @usuario.save
+          render json: @usuario, status: :created, location: @usuario
+        else
+          render json: @usuario.errors, status: :unprocessable_entity
+        end
       end
     end
   end
@@ -62,6 +72,6 @@ class UsuariosController < ApplicationController
   end
 
   def usuario_params
-    params.permit(:nombre, :direccion, :password, :opt)
+    params.permit(:nombre, :direccion, :password, :opt, :dest)
   end
 end

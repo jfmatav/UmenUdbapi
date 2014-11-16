@@ -19,6 +19,9 @@ class PlatosController < ApplicationController
     end
   end
 
+
+
+
   # POST /platos
   # POST /platos.json
   def create
@@ -31,7 +34,7 @@ class PlatosController < ApplicationController
       
 
     else
-      if params[:nota]
+      if params[:nota] #CONSULTA QUE PIDIÓ DAGO PARA MANDAR UNA NOTA Y UN ID Y QUE SE ACTUALICE EN LA BASE DE DATOS
 
         @p = Plato.find(params[:id])
         if @p.calificaciones
@@ -82,6 +85,9 @@ class PlatosController < ApplicationController
       end
     end
   end
+
+
+
 
   # PATCH/PUT /platos/1
   # PATCH/PUT /platos/1.json

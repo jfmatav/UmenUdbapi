@@ -1858,3 +1858,249 @@ Started GET "/platos" for 127.0.0.1 at 2014-11-18 00:49:32 -0600
 Processing by PlatosController#index as HTML
   [1m[35mPlato Load (0.4ms)[0m  SELECT "platos".* FROM "platos"
 Completed 200 OK in 17ms (Views: 16.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/comentarios" for 127.0.0.1 at 2014-11-18 15:10:29 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ComentariosController#index as HTML
+  [1m[35mComentario Load (0.3ms)[0m  SELECT "comentarios".* FROM "comentarios"
+Completed 200 OK in 42ms (Views: 3.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/comentarios?comentario=bueno&puntos=5&plato_id=1&usuario_id=1" for 127.0.0.1 at 2014-11-18 15:12:28 -0600
+Processing by ComentariosController#create as HTML
+  Parameters: {"comentario"=>"bueno", "puntos"=>"5", "plato_id"=>"1", "usuario_id"=>"1"}
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (37.1ms)[0m  INSERT INTO "comentarios" ("comentario", "created_at", "plato_id", "puntos", "updated_at", "usuario_id") VALUES (?, ?, ?, ?, ?, ?)  [["comentario", "bueno"], ["created_at", "2014-11-18 21:12:28.306315"], ["plato_id", 1], ["puntos", 5], ["updated_at", "2014-11-18 21:12:28.306315"], ["usuario_id", 1]]
+  [1m[36m (119.5ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 246ms (Views: 2.2ms | ActiveRecord: 157.3ms)
+
+
+Started POST "/comentarios?busq=1&plato_id=1&usuario_id=1" for 127.0.0.1 at 2014-11-18 15:15:44 -0600
+Processing by ComentariosController#create as HTML
+  Parameters: {"busq"=>"1", "plato_id"=>"1", "usuario_id"=>"1"}
+  [1m[35mComentario Load (0.6ms)[0m  SELECT "comentarios".* FROM "comentarios"  WHERE (plato_id = '1' and usuario_id = '1')
+Completed 200 OK in 14ms (Views: 0.4ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/comentarios?busq=1&plato_id=2&usuario_id=1" for 127.0.0.1 at 2014-11-18 15:15:56 -0600
+Processing by ComentariosController#create as HTML
+  Parameters: {"busq"=>"1", "plato_id"=>"2", "usuario_id"=>"1"}
+  [1m[36mComentario Load (0.3ms)[0m  [1mSELECT "comentarios".* FROM "comentarios"  WHERE (plato_id = '2' and usuario_id = '1')[0m
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/comentarios?put=1&plato_id=2&usuario_id=1&comentario=buenisimo&puntos=10" for 127.0.0.1 at 2014-11-18 15:19:36 -0600
+Processing by ComentariosController#create as HTML
+  Parameters: {"put"=>"1", "plato_id"=>"2", "usuario_id"=>"1", "comentario"=>"buenisimo", "puntos"=>"10"}
+  [1m[35mComentario Load (0.6ms)[0m  SELECT "comentarios".* FROM "comentarios"  WHERE (plato_id = '2' and usuario_id = '1')
+Completed 500 Internal Server Error in 5ms
+
+NoMethodError (undefined method `comentario=' for #<ActiveRecord::Relation []>):
+  app/controllers/comentarios_controller.rb:26:in `create'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (24.7ms)
+
+
+Started POST "/comentarios?put=1&plato_id=2&usuario_id=1&comentario=buenisimo&puntos=10" for 127.0.0.1 at 2014-11-18 15:20:06 -0600
+Processing by ComentariosController#create as HTML
+  Parameters: {"put"=>"1", "plato_id"=>"2", "usuario_id"=>"1", "comentario"=>"buenisimo", "puntos"=>"10"}
+  [1m[36mComentario Load (0.6ms)[0m  [1mSELECT "comentarios".* FROM "comentarios"  WHERE (plato_id = '2' and usuario_id = '1')[0m
+Completed 500 Internal Server Error in 5ms
+
+NoMethodError (undefined method `puntos=' for #<ActiveRecord::Relation []>):
+  app/controllers/comentarios_controller.rb:27:in `create'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.5ms)
+
+
+Started POST "/comentarios?put=1&plato_id=2&usuario_id=1&comentario=buenisimo&puntos=10" for 127.0.0.1 at 2014-11-18 15:22:09 -0600
+Processing by ComentariosController#create as HTML
+  Parameters: {"put"=>"1", "plato_id"=>"2", "usuario_id"=>"1", "comentario"=>"buenisimo", "puntos"=>"10"}
+  [1m[35mComentario Load (0.6ms)[0m  SELECT "comentarios".* FROM "comentarios"  WHERE (plato_id = '2' and usuario_id = '1')
+Completed 500 Internal Server Error in 5ms
+
+NoMethodError (undefined method `comentario=' for #<ActiveRecord::Relation []>):
+  app/controllers/comentarios_controller.rb:26:in `create'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.6ms)
+
+
+Started PUT "/comentarios?id=1&comentario=buenisimo&puntos=10" for 127.0.0.1 at 2014-11-18 15:23:54 -0600
+
+ActionController::RoutingError (No route matches [PUT] "/comentarios"):
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (5.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (31.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (119.9ms)
+
+
+Started PUT "/comentarios/1?comentario=buenisimo&puntos=10" for 127.0.0.1 at 2014-11-18 15:25:21 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ComentariosController#update as HTML
+  Parameters: {"comentario"=>"buenisimo", "puntos"=>"10", "id"=>"1"}
+  [1m[35mComentario Load (0.4ms)[0m  SELECT  "comentarios".* FROM "comentarios"  WHERE "comentarios"."id" = ? LIMIT 1  [["id", 1]]
+Unpermitted parameters: id
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  UPDATE "comentarios" SET "comentario" = ?, "puntos" = ?, "updated_at" = ? WHERE "comentarios"."id" = 1  [["comentario", "buenisimo"], ["puntos", 10], ["updated_at", "2014-11-18 21:25:21.939547"]]
+  [1m[36m (150.2ms)[0m  [1mcommit transaction[0m
+Completed 204 No Content in 183ms (ActiveRecord: 152.1ms)
+
+
+Started GET "/comentarios/1" for 127.0.0.1 at 2014-11-18 15:25:34 -0600
+Processing by ComentariosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mComentario Load (0.2ms)[0m  SELECT  "comentarios".* FROM "comentarios"  WHERE "comentarios"."id" = ? LIMIT 1  [["id", 1]]
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.2ms)
+
+
+Started PUT "/comentarios/1?comentario=plus%20que%20bona&puntos=15" for 127.0.0.1 at 2014-11-18 15:26:04 -0600
+Processing by ComentariosController#update as HTML
+  Parameters: {"comentario"=>"plus que bona", "puntos"=>"15", "id"=>"1"}
+  [1m[36mComentario Load (0.4ms)[0m  [1mSELECT  "comentarios".* FROM "comentarios"  WHERE "comentarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+Unpermitted parameters: id
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "comentarios" SET "comentario" = ?, "puntos" = ?, "updated_at" = ? WHERE "comentarios"."id" = 1[0m  [["comentario", "plus que bona"], ["puntos", 15], ["updated_at", "2014-11-18 21:26:04.420650"]]
+  [1m[35m (131.3ms)[0m  commit transaction
+Completed 204 No Content in 136ms (ActiveRecord: 132.3ms)
+
+
+Started GET "/comentarios/1" for 127.0.0.1 at 2014-11-18 15:26:15 -0600
+Processing by ComentariosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mComentario Load (0.2ms)[0m  [1mSELECT  "comentarios".* FROM "comentarios"  WHERE "comentarios"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/comentarios?busq=1&plato_id=2&usuario_id=1" for 127.0.0.1 at 2014-11-18 15:27:15 -0600
+Processing by ComentariosController#index as HTML
+  Parameters: {"busq"=>"1", "plato_id"=>"2", "usuario_id"=>"1"}
+  [1m[35mComentario Load (0.6ms)[0m  SELECT "comentarios".* FROM "comentarios"
+Completed 200 OK in 11ms (Views: 7.3ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/comentarios?busq=1&plato_id=2&usuario_id=1" for 127.0.0.1 at 2014-11-18 15:27:23 -0600
+Processing by ComentariosController#create as HTML
+  Parameters: {"busq"=>"1", "plato_id"=>"2", "usuario_id"=>"1"}
+  [1m[36mComentario Load (0.3ms)[0m  [1mSELECT "comentarios".* FROM "comentarios"  WHERE (plato_id = '2' and usuario_id = '1')[0m
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/comentarios?busq=1&plato_id=1&usuario_id=1" for 127.0.0.1 at 2014-11-18 15:27:34 -0600
+Processing by ComentariosController#create as HTML
+  Parameters: {"busq"=>"1", "plato_id"=>"1", "usuario_id"=>"1"}
+  [1m[35mComentario Load (0.3ms)[0m  SELECT "comentarios".* FROM "comentarios"  WHERE (plato_id = '1' and usuario_id = '1')
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/platos" for 127.0.0.1 at 2014-11-18 15:36:47 -0600
+Processing by PlatosController#index as HTML
+  [1m[36mPlato Load (0.7ms)[0m  [1mSELECT "platos".* FROM "platos"[0m
+Completed 200 OK in 58ms (Views: 18.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/platos?nota=3&id=1" for 127.0.0.1 at 2014-11-18 15:37:19 -0600
+Processing by PlatosController#index as HTML
+  Parameters: {"nota"=>"3", "id"=>"1"}
+  [1m[35mPlato Load (1.5ms)[0m  SELECT "platos".* FROM "platos"
+Completed 200 OK in 9ms (Views: 6.9ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/platos?nota=3&id=1" for 127.0.0.1 at 2014-11-18 15:37:24 -0600
+Processing by PlatosController#create as HTML
+  Parameters: {"nota"=>"3", "id"=>"1"}
+  [1m[36mPlato Load (0.3ms)[0m  [1mSELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "platos" SET "calificaciones" = ?, "promedio" = ?, "total" = ?, "updated_at" = ? WHERE "platos"."id" = 1[0m  [["calificaciones", 1], ["promedio", 3.0], ["total", 3], ["updated_at", "2014-11-18 21:37:24.625576"]]
+  [1m[35m (146.9ms)[0m  commit transaction
+Completed 200 OK in 152ms (Views: 0.2ms | ActiveRecord: 148.0ms)
+
+
+Started GET "/platos" for 127.0.0.1 at 2014-11-18 15:37:33 -0600
+Processing by PlatosController#index as HTML
+  [1m[36mPlato Load (0.4ms)[0m  [1mSELECT "platos".* FROM "platos"[0m
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/platos?ant=3&nota=5&id=1" for 127.0.0.1 at 2014-11-18 15:37:56 -0600
+Processing by PlatosController#create as HTML
+  Parameters: {"ant"=>"3", "nota"=>"5", "id"=>"1"}
+  [1m[35mPlato Load (0.2ms)[0m  SELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1  [["id", 1]]
+Completed 500 Internal Server Error in 1ms
+
+TypeError (String can't be coerced into Fixnum):
+  app/controllers/platos_controller.rb:33:in `-'
+  app/controllers/platos_controller.rb:33:in `create'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (22.9ms)
+
+
+Started POST "/platos?ant=3&nota=5&id=1" for 127.0.0.1 at 2014-11-18 15:38:25 -0600
+Processing by PlatosController#create as HTML
+  Parameters: {"ant"=>"3", "nota"=>"5", "id"=>"1"}
+  [1m[36mPlato Load (0.3ms)[0m  [1mSELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 500 Internal Server Error in 16ms
+
+NoMethodError (undefined method `total' for nil:NilClass):
+  app/controllers/platos_controller.rb:34:in `create'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (22.4ms)
+
+
+Started POST "/platos?ant=3&nota=5&id=1" for 127.0.0.1 at 2014-11-18 15:38:51 -0600
+Processing by PlatosController#create as HTML
+  Parameters: {"ant"=>"3", "nota"=>"5", "id"=>"1"}
+  [1m[35mPlato Load (0.2ms)[0m  SELECT  "platos".* FROM "platos"  WHERE "platos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "platos" SET "promedio" = ?, "total" = ?, "updated_at" = ? WHERE "platos"."id" = 1  [["promedio", 5.0], ["total", 5], ["updated_at", "2014-11-18 21:38:51.750357"]]
+  [1m[36m (127.6ms)[0m  [1mcommit transaction[0m
+Completed 204 No Content in 147ms (ActiveRecord: 129.4ms)
+
+
+Started GET "/platos" for 127.0.0.1 at 2014-11-18 15:39:00 -0600
+Processing by PlatosController#index as HTML
+  [1m[35mPlato Load (0.4ms)[0m  SELECT "platos".* FROM "platos"
+Completed 200 OK in 9ms (Views: 8.2ms | ActiveRecord: 0.4ms)

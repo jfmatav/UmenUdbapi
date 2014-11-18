@@ -18,12 +18,22 @@ class ComentariosController < ApplicationController
   # POST /comentarios
   # POST /comentarios.json
   def create
-    @comentario = Comentario.new(comentario_params)
 
-    if @comentario.save
-      render json: @comentario, status: :created, location: @comentario
+  
+    if params[:busq] # CONSULTA PARA REVISAR SI YA EXISTE UN COMENTARIO
+ 
+    @comentario = Comentario.where("plato_id = ? and usuario_id = ?", params[:plato_id], params[:usuario_id])
+
+    render json: @comentario.as_json(only: [:id, :comentario, :puntos, :plato_id, :usuario_id])
+
     else
-      render json: @comentario.errors, status: :unprocessable_entity
+      @comentario = Comentario.new(comentario_params)
+
+      if @comentario.save
+        render json: @comentario, status: :created, location: @comentario
+      else
+        render json: @comentario.errors, status: :unprocessable_entity
+      end
     end
   end
 

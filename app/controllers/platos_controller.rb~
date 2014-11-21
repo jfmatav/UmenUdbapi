@@ -31,7 +31,7 @@ class PlatosController < ApplicationController
       @plato = Plato.find(params[:id])
 
       @plato.total = @plato.total - params[:ant].to_i + params[:nota].to_i
-      @p.promedio = @p.total.to_f/@p.calificaciones.to_f
+      @plato.promedio = @plato.total.to_f/@plato.calificaciones.to_f
       @plato.save
 
       head :no_content

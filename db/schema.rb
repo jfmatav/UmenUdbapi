@@ -11,12 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141125043632) do
+ActiveRecord::Schema.define(version: 20141125044411) do
 
   create_table "acompanamientos", force: true do |t|
     t.integer "dia"
     t.integer "semana"
     t.integer "soda_id"
+    t.string  "acompanamiento"
+    t.string  "guarnicion"
+    t.string  "ensalada1"
+    t.string  "ensalada2"
+    t.string  "ensalada3"
+    t.string  "ensalada4"
+    t.string  "ensalada5"
+    t.string  "ensalada6"
+    t.string  "fruta1"
+    t.string  "fruta2"
+    t.string  "fresco1"
+    t.string  "fresco2"
+    t.string  "frescosinazucar"
   end
 
   create_table "comentarios", force: true do |t|

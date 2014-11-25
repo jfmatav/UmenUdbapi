@@ -12,18 +12,28 @@ class AcompanamientosController < ApplicationController
   def show
     @acompanamiento = Acompanamiento.find(params[:id])
 
-    render json: @acompanamiento.as_json(only: [:id, :acompanamientos, :soda_id, :dia, :semana])
+    render json: @acompanamiento
   end
 
   # POST /acompanamientos
   # POST /acompanamientos.json
   def create
-    @acompanamiento = Acompanamiento.new(acompanamiento_params)
 
-    if @acompanamiento.save
-      render json: @acompanamiento, status: :created, location: @acompanamiento
+    if params[:busq]
+
+      @acomp = Acompanamiento.where("dia = ? and semana = ? and soda_id = ?", params[:dia], params[:semana], params[:soda_id])
+      
+      render json: @acomp
+
     else
-      render json: @acompanamiento.errors, status: :unprocessable_entity
+
+      @acompanamiento = Acompanamiento.new(acompanamiento_params)
+
+      if @acompanamiento.save
+        render json: @acompanamiento, status: :created, location: @acompanamiento
+      else
+        render json: @acompanamiento.errors, status: :unprocessable_entity
+      end
     end
   end
 

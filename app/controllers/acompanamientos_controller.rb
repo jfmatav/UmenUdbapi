@@ -49,6 +49,6 @@ class AcompanamientosController < ApplicationController
   end
 
   def acompanamiento_params
-    params.permit(:acompanamientos, :soda_id, :semana, :dia)
+    params.permit(:acompanamiento, :guarnicion, :ensalada1, :ensalada2, :ensalada3, :ensalada4, :ensalada5, :ensalada6, :fresco1, :fresco2, :frescosinazucar, :fruta1, :fruta2, :soda_id, :semana, :dia)
   end
 end

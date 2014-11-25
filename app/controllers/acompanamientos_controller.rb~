@@ -12,13 +12,13 @@ class AcompanamientosController < ApplicationController
   def show
     @acompanamiento = Acompanamiento.find(params[:id])
 
-    render json: @acompanamiento
+    render json: @acompanamiento.as_json(only: [:id, :acompanamientos, :soda_id, :dia, :semana])
   end
 
   # POST /acompanamientos
   # POST /acompanamientos.json
   def create
-    @acompanamiento = Acompanamiento.new(params[:acompanamiento])
+    @acompanamiento = Acompanamiento.new(acompanamiento_params)
 
     if @acompanamiento.save
       render json: @acompanamiento, status: :created, location: @acompanamiento
@@ -32,7 +32,7 @@ class AcompanamientosController < ApplicationController
   def update
     @acompanamiento = Acompanamiento.find(params[:id])
 
-    if @acompanamiento.update(params[:acompanamiento])
+    if @acompanamiento.update(acompanamiento_params)
       head :no_content
     else
       render json: @acompanamiento.errors, status: :unprocessable_entity
@@ -46,5 +46,9 @@ class AcompanamientosController < ApplicationController
     @acompanamiento.destroy
 
     head :no_content
+  end
+
+  def acompanamiento_params
+    params.permit(:acompanamiento, :guarnicion, :ensalada1, :ensalada2, :ensalada3, :ensalada4, :ensalada5, :ensalada6, :fresco1, :fresco2, :frescosinazucar, :fruta1, :fruta2, :soda_id, :semana, :dia)
   end
 end
